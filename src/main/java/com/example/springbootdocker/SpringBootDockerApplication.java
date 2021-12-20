@@ -31,9 +31,9 @@ public class SpringBootDockerApplication {
 		byte [] nbt = new byte[1024*1024];
 		new Random().nextBytes(nbt);
 		
-//		for (int i = 4; i < 1000; i++) {
-//			groceryItemRepo.save(new GroceryItem(i+"", "mlieko" +i, i, "mliecne"));
-//		}
+		for (int i = 4; i < 1000; i++) {
+			groceryItemRepo.save(new GroceryItem(i+"", "mlieko" +i, i, "mliecne"));
+		}
 		
 //		System.out.println("Size of nbt is " + VM.current().sizeOf(nbt));
 		try {
