@@ -3,6 +3,8 @@ phases:
   install:
     runtime-versions:
       java: corretto11
+    commands:
+      - npm install -g aws-cdk
   pre_build:
     commands:
     - echo In the pre_build phase...
