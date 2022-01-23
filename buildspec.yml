@@ -4,7 +4,7 @@ phases:
     runtime-versions:
       java: corretto11
     commands:
-      - apk add --no-cache --update openssl curl jq 
+      - apt install openssl curl jq 
   pre_build:
     commands:
     - echo In the pre_build phase...
