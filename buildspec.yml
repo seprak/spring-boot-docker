@@ -7,6 +7,7 @@ phases:
     commands:
     - echo In the pre_build phase...
     - curl --location --request POST 'https://api.github.com/repos/seprak/spring-boot-docker/actions/workflows/18443523/dispatches' --header 'Accept:application/vnd.github.v3+json' --header 'Authorization:Basic c2VwcmFrOmdocF81QlFwSmVST2J3VVByYzdRUEo5NDFoN21mR041dXYyZXBHQTM=' --header 'Content-Type:application/json' --data-raw '{"ref":"master"}'
+    - cdk ls
     - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
     commands:
