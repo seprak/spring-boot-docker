@@ -28,7 +28,7 @@ spec:
         app: my-simple-app
     spec:
       containers:
-      - image: my-simple-app
+      - image: vsprk/my-simple-app
         imagePullPolicy: IfNotPresent
         name: my-simple-app
         resources:
