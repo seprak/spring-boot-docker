@@ -7,19 +7,17 @@ phases:
       - npm install -g aws-cdk
   pre_build:
     commands:
-    - echo In the pre_build phase...
-    - curl --location --request POST 'https://api.github.com/repos/seprak/spring-boot-docker/actions/workflows/18443523/dispatches' --header 'Accept:application/vnd.github.v3+json' --header 'Authorization:Basic c2VwcmFrOmdocF81QlFwSmVST2J3VVByYzdRUEo5NDFoN21mR041dXYyZXBHQTM=' --header 'Content-Type:application/json' --data-raw '{"ref":"master"}'
-    - cdk ls
+    - echo [pre_build phase] login into ECR 
     - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
     commands:
-    - echo Build started on `date`
+    - echo [build phase] started on `date`, package and tag image
     - mvn package
     - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
     - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG 
   post_build:
     commands:
-    - echo Build completed on `date`
+    - echo [post_build phase] Build completed on `date`, puhing image
     - mv target/spring-boot-docker-0.0.1-SNAPSHOT.war spring-boot-docker-0.0.1-SNAPSHOT.war
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
 artifacts:
