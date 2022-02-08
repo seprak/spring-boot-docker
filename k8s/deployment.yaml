@@ -28,7 +28,7 @@ spec:
         app: my-simple-app
     spec:
       containers:
-      - image: vsprk/my-simple-app:master
+      - image: 168474318131.dkr.ecr.eu-central-1.amazonaws.com/test-repo-3:latest
         imagePullPolicy: IfNotPresent
         name: my-simple-app
         resources:
