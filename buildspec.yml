@@ -1,4 +1,7 @@
 version: 0.2
+env:
+  variables:
+    AWS_ACCOUNT_ID: "168474318131" 
 phases:
   install:
     runtime-versions:
@@ -7,7 +10,7 @@ phases:
       - npm install -g aws-cdk
   pre_build:
     commands:
-    - echo [pre_build phase] login into ECR 
+    - echo [pre_build phase] login into ECR
     - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
     commands:
