@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - image: 168474318131.dkr.ecr.eu-central-1.amazonaws.com/test-repo-3:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: my-simple-app
         resources:
           requests:
